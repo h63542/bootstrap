@@ -79,11 +79,11 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: @baseLineHeight;
-  padding: 4px 6px;
+  height: @inputHeight;
+  //padding: 4px 6px;
   margin-bottom: @baseLineHeight / 2;
   font-size: @baseFontSize;
-  line-height: @baseLineHeight;
+  line-height: @inputHeight;
   color: @gray;
   .border-radius(@inputBorderRadius);
   vertical-align: middle;
@@ -98,7 +98,7 @@ textarea,
 }
 // Reset height since textareas have rows
 textarea {
-  height: auto;
+  height:  @baseLineHeight*2;
 }
 // Everything else
 textarea,
@@ -134,7 +134,7 @@ input[type="color"],
 // Position radios and checkboxes better
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
+  margin: 0px 0 0;
   *margin-top: 0; /* IE7 */
   margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
@@ -161,7 +161,7 @@ input[type="file"] {
 
 // Make select elements obey height by applying a border
 select {
-  width: 220px; // default input width + 10px of padding that doesn't get applied
+  width: 206px; // default input width + 10px of padding that doesn't get applied
   border: 1px solid @inputBorder;
   background-color: @inputBackground; // Chrome on Linux and Mobile Safari need background-color
 }
@@ -646,14 +646,14 @@ legend + .control-group {
 .form-horizontal {
   // Increase spacing between groups
   .control-group {
-    margin-bottom: @baseLineHeight;
+    margin-bottom: (@baseLineHeight / 2) - 2px;
     .clearfix();
   }
   // Float the labels left
   .control-label {
     float: left;
-    width: @horizontalComponentOffset - 20;
-    padding-top: 5px;
+    width: @horizontalComponentOffset - 24;
+    //padding-top: 5px;
     text-align: right;
   }
   // Move over all input controls and content
@@ -662,6 +662,7 @@ legend + .control-group {
     // don't inherit the margin of the parent, in this case .controls
     *display: inline-block;
     *padding-left: 20px;
+    position: relative;
     margin-left: @horizontalComponentOffset;
     *margin-left: 0;
     &:first-child {
@@ -680,7 +681,7 @@ legend + .control-group {
   .input-prepend,
   .input-append {
     + .help-block {
-      margin-top: @baseLineHeight / 2;
+      //margin-top: @baseLineHeight / 2;
     }
   }
   // Move over buttons in .form-actions to align with .controls
